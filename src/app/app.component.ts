@@ -5,7 +5,7 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
   selector: 'app-root', 
   
   /* template: construímos aqui nossa template (sem o html -> app.component.html), ao usar crase podemos mudar de linha e importar outros componentes (pelo seletor) */
-  template: `
+  template:   ` 
     <router-outlet></router-outlet>
     <app-title *ngIf="destruir"></app-title> 
     {{ valor }}
@@ -13,7 +13,8 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
     <button (click)="funcaoDestruir()"> Destruir Componente </button>
     <br><hr>
     <app-data-binding></app-data-binding>
-
+    <br><hr>
+    <app-diretivas-estruturais></app-diretivas-estruturais>
   `,
 })
 export class AppComponent implements OnInit, DoCheck, AfterContentChecked, AfterContentInit, AfterViewInit, AfterViewChecked {

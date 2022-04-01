@@ -1,0 +1,19 @@
+<h1>Diretivas Estruturais</h1>
+
+<h2>ngIf</h2>
+<p *ngIf="true">Forma direta. Se verdadeiro aparace o parágrafo, se "false" não aparece</p>
+<p *ngIf="condicao">Outra forma, porém o método vem do componente que será "true ou false"</p>
+<p *ngIf="outraCondicao; else alteraCondicao">Condição 1</p>
+
+<!-- Usando o alteraCondicao -->
+<ng-template #alteraCondicao>
+  <p>
+    Agora Condição 2
+  </p>
+</ng-template>
+
+<br>
+<p *ngIf="clickMuda">Valor Verdadeiro!</p>
+<p *ngIf="!clickMuda">Valor Falso!</p> <!-- note o sinal de exclamação para negativo/falso -->
+<button (click)="clicar()">Clique e Alterne "Veradeiro ou Falso"</button> <!-- funçao clicar() invocada -->
+

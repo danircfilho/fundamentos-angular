@@ -11,7 +11,7 @@ export class DataBindingComponent implements OnInit {
   public idade: number = 46 
 
   /* property binding */
-  public checkedDisable: boolean = false
+  public checkedDisable: boolean = false /* true esmaece o botão */
   public imgSrc: string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTeNhddUQInfcuwztyqws-yWCaGB-y1gzJmg&usqp=CAU"
   public imgTitle: string = "Property Binding"
 
