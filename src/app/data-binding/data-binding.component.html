@@ -1,0 +1,31 @@
+<h1>Data Bindings</h1>
+<h2>Interpolation</h2>
+<p>Meu nome é {{ nome }} e tenho {{ idade}} anos!</p> 
+<p>{{ nome }} tem mais de 40 anos?</p>
+<p>Resposta: {{ idade > 40 }} </p>
+
+<hr>
+<h2>Property Binding</h2>
+<button [disabled]="checkedDisable">Botão</button>
+<br>
+<img [src]="imgSrc" [title]="imgTitle" [alt]="imgTitle">
+
+<hr>
+<h2>Event Binding</h2>
+<button (click)="alertInfo()">Evento</button>
+<button (click)="alertInfo2('Evento Concluído Número Dois!')">Evento 2</button>
+<button (click)="alertInfo3($event)">Evento 3</button>  <!-- irá mostrar no console os eventos -->
+<h3>Entendendo um tipo de evento do mouse</h3>
+
+<div
+  (mousemove)="exemploEventMouse($event)"
+  style="background: green; width: 300px; height: 300px;"
+>
+</div>
+{{ position.x }} - {{ position.y }}
+
+<hr>
+<h2>Two-Way Data Binding</h2>
+<br>
+<input [(ngModel)] = "nome">
+<p>Veja, ao digitar no input muda junto (estamos usando método declarado - variável - do componente): {{ nome }}</p>
