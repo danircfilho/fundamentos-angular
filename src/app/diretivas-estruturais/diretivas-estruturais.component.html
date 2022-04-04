@@ -4,7 +4,6 @@
 <p *ngIf="true">Forma direta. Se verdadeiro aparace o parágrafo, se "false" não aparece</p>
 <p *ngIf="condicao">Outra forma, porém o método vem do componente que será "true ou false"</p>
 <p *ngIf="outraCondicao; else alteraCondicao">Condição 1</p>
-
 <!-- Usando o alteraCondicao -->
 <ng-template #alteraCondicao>
   <p>
@@ -12,8 +11,38 @@
   </p>
 </ng-template>
 
-<br>
+<button (click)="clicar()">Clique e Alterne Abaixo entre "Verdadeiro ou Falso"</button> <!-- funçao clicar() invocada -->
 <p *ngIf="clickMuda">Valor Verdadeiro!</p>
 <p *ngIf="!clickMuda">Valor Falso!</p> <!-- note o sinal de exclamação para negativo/falso -->
-<button (click)="clicar()">Clique e Alterne "Veradeiro ou Falso"</button> <!-- funçao clicar() invocada -->
 
+<h2>ngFor</h2>
+<ul>
+  <!-- 
+    1) se lê: let(pegar) item (pode ser qq nome: item ou outro) 'of' list (da lista - list é o método/variável no componente),
+    2) index colca o índice,
+    3) foi colocado um evento de click
+  -->
+  <li *ngFor="let item of list, let i = index" (click)="clicRemovItem(i)"> <!--  -->
+    {{ i }} - Nome: {{ item.nome }} - idade: {{ item.idade}}  
+  </li>
+</ul>
+<button (click)="clicAdicLista()">Adicionar Item"</button>
+
+<br>
+<h2>ngSwitch</h2>
+<!-- o switch não é uma sintax sugar -->
+<!-- no caso, o Switch está recebendo uma condição (aspas simples) que é uma string (aspas duplas)-->
+<div [ngSwitch]="'cond1'"> 
+  <!-- neste caso, a condição descrita no Switch (cond1 = Daniel) aparecerá na tela -->
+  <p *ngSwitchCase="'cond1'"> Aparece por exemplo: Daniel </p> <!-- o switchCase sim, é uma sintax sugar -->
+  <p *ngSwitchCase="'cond2'"> Aparece por exemplo: Pedro </p> 
+</div>
+
+<div [ngSwitch]="nome"> 
+  <!-- para melhorar a condição de alterar o item na tela usando o método nome do componente -->
+  <p>Abaixo, se digitar cond3 aparece Daniel, se digitar cond4, aparece Pedro!</p>
+  <input type="text" [(ngModel)]="nome">
+  <p *ngSwitchCase="'cond3'">Daniel</p> <!-- o switchCase sim, é uma sintax sugar -->
+  <p *ngSwitchCase="'cond4'">Pedro</p> 
+  <p *ngSwitchDefault>Digite cond3 ou cond 4 para os nomes aparecerem aqui!!!</p> <!-- switchCaseDefault serve para determinar outro caso que não seja um especifico, é valido para buscas não encontradas por exemplo! -->
+</div>
