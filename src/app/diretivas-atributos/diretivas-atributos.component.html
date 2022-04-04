@@ -1,1 +1,56 @@
-<p>diretivas-atributos works!</p>
+<h1>Diretivas de Atributos</h1>
+<h2>ngClass</h2>
+<p [ngClass]="'cinza'">Exemplo Simples de Aplicação</p>
+<!-- neste caso, cinza é uma classe declarada no arquivo (CSS/SCSS) e o atributo mudacor é o metodo declarado no componente -->
+<p [ngClass]="{'cinza': mudacor, 'amarelo': !mudacor}">Alterna cor usando o boolean (true or false)! Veja o código (método) no componente!</p>
+<!-- neste caso, height e background correspondem ao nome original do estilo; altura e corFundo são atributos dos metodos declarados no componente -->
+
+<h2>ngStyle</h2>
+<p [ngStyle]="{'height': altura, 'background': corFundo}">Alterna altura e cor! Veja o código (método) no componente!</p>
+
+<h2>ngModel</h2>
+<p>O "ngModel" sempre está atrelado a um "input" de formulário e é bidirecional, ou seja, tudo que é digitado retorna, para isso é necessário importar o "FormsModule"</p>
+<!-- ngModel recebe "nome" e interpolation exibe "nome" -->
+<input type="text" [(ngModel)]="nome">
+<button (click)="salvarExUm()">Salvar</button>
+<li *ngFor="let individuo of lista">{{ individuo.nome }}</li>
+<!-- pode ser desta forma <li *ngFor="let item of list">{{ item.nome }}</li> -->
+
+<h2>ng-template</h2>
+<p>De forma grosseira se refere há elementos que podem ser manipulados antes de aparecerem de fato no DOM</p>
+
+<ng-template [ngIf]="true">
+  <p>
+    True deve aparecer
+  </p>
+</ng-template>
+
+<p>Usar o ngFor no ng-template</p>
+<p>Ganha-se desempenho pois nada é renderizado antes de realmente ser validado no ng-template, caso nada seja validaddo, nada é carregado (renderizado)</p>
+<ng-template ngFor let-item [ngForOf]="lista2">
+  <p>
+    {{ item.nomedois }}
+  </p>
+</ng-template>
+<P>Usando botões para renderizar o ng-template</P>
+<input type="text" [(ngModel)]="nomedois">
+<button (click)="salvarExDois()">Salvar</button>
+
+<h2>ng-content</h2>
+<p>É a forma de inserirmos tags e funcionalidades em qualquer lugar de nossa página através do componente. Veja no app.component.ts; no componente diretivas-atributos.ts, caso não apliquemos o lugar, as tags ficaram por último</p>
+<ng-content select="h3"></ng-content>
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur aperiam nostrum placeat asperiores et modi, commodi impedit tenetur ipsa voluptates omnis voluptas excepturi id recusandae quasi quo veniam suscipit saepe.<br><br>
+<ng-content select="strong"></ng-content>
+
+<h2>Pipes</h2>
+<p>São usados em vários lugares para determinar o que será feitos com métodos, funções entre outras coisas</p>
+<p>Abaixo um exemplo usando a lista já antes criada. O texto será passado para maíusculo (uppercase)</p>
+<input type="text" [(ngModel)]="nome">
+<button (click)="salvarExUm()">Salvar</button>
+<li *ngFor="let individuo of lista">{{ individuo.nome | uppercase }}</li>
+
+<p>Abaixo um exemplo de data - função pertencente ao Javascript</p>
+<span>{{ date }}</span>
+
+<p>Agora customizado com Pipe "|" em dd/MM/yyyy</p>
+<span>{{ date | date: "dd/MM/yyyy" }}</span>
