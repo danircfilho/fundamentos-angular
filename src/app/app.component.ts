@@ -6,7 +6,8 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
   
   /* template: construímos aqui nossa template (sem o html -> app.component.html), ao usar crase podemos mudar de linha e importar outros componentes (pelo seletor) */
   /* <router-outlet></router-outlet> ver se precisa usar */
-  template:   ` 
+  template:   `
+    <app-new-component></app-new-component> 
     <app-title *ngIf="destruir"></app-title> 
     {{ valor }}
     <button (click)="funcaoAdicionar()"> Adicionar </button>    
