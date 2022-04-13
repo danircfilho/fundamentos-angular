@@ -8,7 +8,7 @@ import { FoodListService } from 'src/app/services/food-list.service';
   styleUrls: ['./food-add.component.scss']
 })
 export class FoodAddComponent implements OnInit {
-
+  
   constructor(private foodListService: FoodListService) { }
 
   ngOnInit(): void {
