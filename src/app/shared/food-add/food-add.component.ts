@@ -15,7 +15,9 @@ export class FoodAddComponent implements OnInit {
   }
 
   public listAddItem(value: string) {
-    return this.foodListService.foodListAdd(value)
+    this.foodListService.foodListAdd(value).subscribe({
+      next: (res) => this.foodListService.foodListAlert(res),
+      error: (err) => console.log(err)
+    })
   }
-
 }
